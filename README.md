@@ -1,1 +1,1 @@
-# c-project-kyochn
+#3週目まで
