@@ -1,18 +1,18 @@
 #include <stdio.h>
 
 int main(void){
-    int count; scanf("%d",&count); 
+    int data_size; scanf("%d",&data_size); 
 
     int large,num;
 
-    int data[count];
-    for (int i = 0; i < count; i++){
+    int data[data_size];
+    for (int i = 0; i < data_size; i++){
 		scanf("%d",&num);
 		data[i]=num;
 	}
     
-    for (int i = 0; i < count; i++){
-        for (int j = i + 1; j < count; j++){
+    for (int i = 0; i < data_size; i++){
+        for (int j = i + 1; j < data_size; j++){
             if (data[i] > data[j]){
                 large = data[i];
                 data[i] = data[j];
@@ -22,7 +22,7 @@ int main(void){
     }
 
     printf("result:");
-    for(int i = 0; i < count; i++){
+    for(int i = 0; i < data_size; i++){
         printf(" %d", data[i]);
     }
     printf("\n");
