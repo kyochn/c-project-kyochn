@@ -38,7 +38,7 @@ bool crash(Triple triple){
 bool is_triangle(Triple triple){
     double tilt1,tilt2;
 
-    if(crash){
+    if(crash(triple)){
         return false;
     }else{
         tilt1=(triple.A.y-triple.B.y)/(triple.A.x-triple.B.x);
@@ -58,7 +58,7 @@ Triple make_triangle(){
     triple.C.x=rand()%50;
     triple.C.y=rand()%50;
 
-    if(is_triangle(triple)) goto begin;
+    if(!is_triangle(triple)) goto begin;
 
     double distance1,distance2,distance3,heron;
     distance1=sqrt((triple.A.x-triple.B.x)*(triple.A.x-triple.B.x)+(triple.A.y-triple.B.y)*(triple.A.y-triple.B.y));
