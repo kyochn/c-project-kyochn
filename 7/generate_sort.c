@@ -16,14 +16,12 @@ typedef struct{
     double area;
 } Triple;
 
-
 //typedef enum {red,orange,yellow,blue,sky,green,brown,gray} Color;
 
 /*typedef struct{
     Triple triple;
     Color color;
 }Triangle; */
-
 
 bool crash(Triple triple){
     if(triple.A.x==triple.B.x){
@@ -93,17 +91,18 @@ void centering_triangle(Triple *triple){
     triple->C.x-=gx; triple->C.y-=gy;
 }
 
-int main() {
+Triple generate_triple_away(int n,Triple triple[n]){
+    for(int i=0;i<n;i++){
+        triple[i]=make_triangle();
+    }
+}
+
+int main(){
     srand((unsigned int)time(NULL));
-    Triple triple = make_triangle();
-    printf("前のAの座標：(%lf,%lf)\n", triple.A.x, triple.A.y);
-    printf("前のBの座標：(%lf,%lf)\n", triple.B.x, triple.B.y);
-    printf("前のCの座標：(%lf,%lf)\n", triple.C.x, triple.C.y);
-    printf("面積：%lf\n", triple.area);
-    printf("\n");
-    centering_triangle(&triple);
-    printf("今のAの座標：(%lf,%lf)\n", triple.A.x, triple.A.y);
-    printf("今のBの座標：(%lf,%lf)\n", triple.B.x, triple.B.y);
-    printf("今のCの座標：(%lf,%lf)\n", triple.C.x, triple.C.y);
-    printf("面積：%lf\n", triple.area);
+    int num; scanf("%d", &num);
+    Triple triple[num];
+    generate_triple_away(num,triple);
+    printf("%lf\n", triple[0].A.x);
+    printf("%lf\n", triple[0].B.x);
+    printf("%lf\n", triple[4].C.x);
 }
