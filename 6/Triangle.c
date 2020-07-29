@@ -16,14 +16,12 @@ typedef struct{
     double area;
 } Triple;
 
+typedef enum {red,orange,yellow,blue,sky,green,brown,gray} Color;
 
-//typedef enum {red,orange,yellow,blue,sky,green,brown,gray} Color;
-
-/*typedef struct{
+typedef struct{
     Triple triple;
     Color color;
-}Triangle; */
-
+}Triangle;
 
 bool crash(Triple triple){
     if(triple.A.x==triple.B.x){
@@ -76,34 +74,50 @@ Triple make_triangle(){
     }
 }
 
-/*Triangle generate(){
+Triangle generate(){
     static int color;
     Triple triple=make_triangle();
     Triangle triangle={triple,(Color)color};
     color++;
     if(color>7) color=0;
     return triangle;
-} */
-
-void centering_triangle(Triple *triple){
-    double gx=(triple->A.x+triple->B.x+triple->C.x)/3;
-    double gy=(triple->A.y+triple->B.y+triple->C.y)/3;
-    triple->A.x-=gx; triple->A.y-=gy;
-    triple->B.x-=gx; triple->B.y-=gy;
-    triple->C.x-=gx; triple->C.y-=gy;
 }
 
-int main() {
-    srand((unsigned int)time(NULL));
-    Triple triple = make_triangle();
-    printf("前のAの座標：(%lf,%lf)\n", triple.A.x, triple.A.y);
-    printf("前のBの座標：(%lf,%lf)\n", triple.B.x, triple.B.y);
-    printf("前のCの座標：(%lf,%lf)\n", triple.C.x, triple.C.y);
-    printf("面積：%lf\n", triple.area);
-    printf("\n");
-    centering_triangle(&triple);
-    printf("今のAの座標：(%lf,%lf)\n", triple.A.x, triple.A.y);
-    printf("今のBの座標：(%lf,%lf)\n", triple.B.x, triple.B.y);
-    printf("今のCの座標：(%lf,%lf)\n", triple.C.x, triple.C.y);
-    printf("面積：%lf\n", triple.area);
+int main(){
+    int i;
+    srand((unsigned int) time(NULL));
+    for(i=0;i<10;i++){
+        Triangle triangle=generate();
+        printf("Aの座標：(%lf,%lf)\n",triangle.triple.A.x,triangle.triple.A.y);
+        printf("Bの座標：(%lf,%lf)\n",triangle.triple.B.x,triangle.triple.B.y);
+        printf("Cの座標：(%lf,%lf)\n",triangle.triple.C.x,triangle.triple.C.y);
+        printf("面積：%lf\n",triangle.triple.area);
+        switch(triangle.color){
+            case 0:
+                printf("色：赤\n");
+                break;
+            case 1:
+                printf("色：橙\n");
+                break;
+            case 2:
+                printf("色：黄\n");
+                break;
+            case 3:
+                printf("色：青\n");
+                break;
+            case 4:
+                printf("色：水\n");
+                break;
+            case 5:
+                printf("色：緑\n");
+                break;
+            case 6:
+                printf("色：茶\n");
+                break;
+            case 7:
+                printf("色：灰\n");
+                break;
+        }
+        if(i!=9) printf("\n");
+    }
 }
