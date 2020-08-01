@@ -97,7 +97,7 @@ Triple generate_triple_away(int n,Triple triple[]){
     }
 }
 
-int compare_int(const void *a, const void *b){
+int compare_area(const void *a, const void *b){
     return ((Triple *)b)->area - ((Triple *)a)->area;
 }
 
@@ -106,7 +106,7 @@ int main(){
     int num; scanf("%d", &num);
     Triple triple[num];
     generate_triple_away(num,triple);
-    qsort(triple, num, sizeof(Triple), compare_int);
+    qsort(triple, num, sizeof(Triple), compare_area);
     for(int i=0;i<num;i++){
         printf("%lf\n",triple[i].area);
     }
