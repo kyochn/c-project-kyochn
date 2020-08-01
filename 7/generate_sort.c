@@ -91,18 +91,23 @@ void centering_triangle(Triple *triple){
     triple->C.x-=gx; triple->C.y-=gy;
 }
 
-Triple generate_triple_away(int n,Triple triple[5]){
+Triple generate_triple_away(int n,Triple triple[]){
     for(int i=0;i<n;i++){
         triple[i]=make_triangle();
     }
 }
 
+int compare_int(const void *a, const void *b){
+    return ((Triple *)b)->area - ((Triple *)a)->area;
+}
+
 int main(){
     srand((unsigned int)time(NULL));
     int num; scanf("%d", &num);
-    Triple triple[5];
+    Triple triple[num];
     generate_triple_away(num,triple);
-    printf("%lf\n", triple[0].A.x);
-    printf("%lf\n", triple[0].B.x);
-    printf("%lf\n", triple[4].C.x);
+    qsort(triple, num, sizeof(Triple), compare_int);
+    for(int i=0;i<num;i++){
+        printf("%lf\n",triple[i].area);
+    }
 }
