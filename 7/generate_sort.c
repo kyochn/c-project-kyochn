@@ -91,7 +91,7 @@ void centering_triangle(Triple *triple){
     triple->C.x-=gx; triple->C.y-=gy;
 }
 
-Triple generate_triple_away(int n,Triple triple[n]){
+Triple generate_triple_away(int n,Triple triple[5]){
     for(int i=0;i<n;i++){
         triple[i]=make_triangle();
     }
@@ -100,7 +100,7 @@ Triple generate_triple_away(int n,Triple triple[n]){
 int main(){
     srand((unsigned int)time(NULL));
     int num; scanf("%d", &num);
-    Triple triple[num];
+    Triple triple[5];
     generate_triple_away(num,triple);
     printf("%lf\n", triple[0].A.x);
     printf("%lf\n", triple[0].B.x);
