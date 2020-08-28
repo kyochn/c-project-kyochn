@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-    FILE *file[argc-1];
+    FILE *file[2];
     char str[256];
 
     printf("%d\n", argc);
