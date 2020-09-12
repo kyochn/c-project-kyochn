@@ -28,7 +28,6 @@ int main(int argc, char *argv[]) {
 
     if (argc < 2 || !strcmp(argv[1], "-")) {
         while (!flag) {
-        std:
             c = getchar();
             printf("%c", c);
         }
@@ -50,7 +49,23 @@ int main(int argc, char *argv[]) {
         goto end;
     }
 
-    if (!strcmp(argv[1], "-+")) {
+    if (!strcmp(argv[1], "-a")) {
+        for (int i = 1; i < argc - 1; i++) {
+            file[i] = fopen(argv[i + 1], "a");
+            if (file[i] == NULL) {
+                printf("no exist\n\n");
+                continue;
+            }
+            while ((fgets(str, 256, file[i])) != NULL) {
+                printf("%s", str);
+            }
+            printf("\n\n");
+            fclose(file[i]);
+        }
+        goto end;
+    }
+
+    if (!strcmp(argv[1], "-r+")) {
         for (int i = 1; i < argc - 1; i++) {
             file[i] = fopen(argv[i + 1], "r+");
             if (file[i] == NULL) {
@@ -66,9 +81,25 @@ int main(int argc, char *argv[]) {
         goto end;
     }
 
-    if (!strcmp(argv[1], "a")) {
+    if (!strcmp(argv[1], "-w+")) {
         for (int i = 1; i < argc - 1; i++) {
-            file[i] = fopen(argv[i + 1], "a");
+            file[i] = fopen(argv[i + 1], "w+");
+            if (file[i] == NULL) {
+                printf("no exist\n\n");
+                continue;
+            }
+            while ((fgets(str, 256, file[i])) != NULL) {
+                printf("%s", str);
+            }
+            printf("\n\n");
+            fclose(file[i]);
+        }
+        goto end;
+    }
+
+    if (!strcmp(argv[1], "-a+")) {
+        for (int i = 1; i < argc - 1; i++) {
+            file[i] = fopen(argv[i + 1], "a+");
             if (file[i] == NULL) {
                 printf("no exist\n\n");
                 continue;
