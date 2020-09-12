@@ -8,25 +8,79 @@ void handler(int sig) { flag = 1; }
 
 int main(int argc, char *argv[]) {
     FILE *file[argc - 1];
-    char str[256];
-    char c;
+    FILE *help;
+    char str[256], c;
 
-//    printf("%d\n", argc);
-//    printf("%s\n",argv[1]);
+    if (!strcmp(argv[1], "-help")) {
+        help = fopen("help.txt", "r");
+        while ((fgets(str, 256, help) != NULL)) {
+            printf("%s", str);
+        }
+        printf("\n\n");
+        fclose(help);
+        goto end;
+    }
+
+    //    printf("%d\n", argc);
+    //    printf("%s\n",argv[1]);
 
     signal(SIGQUIT, handler);
 
-    if (argc < 2) {
+    if (argc < 2 || !strcmp(argv[1], "-")) {
         while (!flag) {
-            std:
+        std:
             c = getchar();
             printf("%c", c);
         }
     }
 
-    if (!strcmp(argv[1],"-")) {
-        goto std;
-    } 
+    if (!strcmp(argv[1], "-w")) {
+        for (int i = 1; i < argc - 1; i++) {
+            file[i] = fopen(argv[i + 1], "w");
+            if (file[i] == NULL) {
+                printf("no exist\n\n");
+                continue;
+            }
+            while ((fgets(str, 256, file[i])) != NULL) {
+                printf("%s", str);
+            }
+            printf("\n\n");
+            fclose(file[i]);
+        }
+        goto end;
+    }
+
+    if (!strcmp(argv[1], "-+")) {
+        for (int i = 1; i < argc - 1; i++) {
+            file[i] = fopen(argv[i + 1], "r+");
+            if (file[i] == NULL) {
+                printf("no exist\n\n");
+                continue;
+            }
+            while ((fgets(str, 256, file[i])) != NULL) {
+                printf("%s", str);
+            }
+            printf("\n\n");
+            fclose(file[i]);
+        }
+        goto end;
+    }
+
+    if (!strcmp(argv[1], "a")) {
+        for (int i = 1; i < argc - 1; i++) {
+            file[i] = fopen(argv[i + 1], "a");
+            if (file[i] == NULL) {
+                printf("no exist\n\n");
+                continue;
+            }
+            while ((fgets(str, 256, file[i])) != NULL) {
+                printf("%s", str);
+            }
+            printf("\n\n");
+            fclose(file[i]);
+        }
+        goto end;
+    }
 
     for (int i = 0; i < argc - 1; i++) {
         file[i] = fopen(argv[i + 1], "r");
@@ -40,5 +94,7 @@ int main(int argc, char *argv[]) {
         printf("\n\n");
         fclose(file[i]);
     }
+
+end:
     return 0;
 }
