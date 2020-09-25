@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (!strcmp(argv[1], "-help")) {
-        file[1] = fopen("help.txt", "r");
+        file[1] = fopen("help.md", "r");
         while ((fgets(str, 256, file[1])) != NULL) {
             printf("%s", str);
         }
