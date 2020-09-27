@@ -144,9 +144,9 @@ int main(int argc, char *argv[]) {
                         break;
                     }
                 } 
-                printf("%s", str);
+                printf("%s\n", str);
             }
-            printf("\n\n");
+            printf("\n");
             fclose(file[i]);
         }
         goto end;
