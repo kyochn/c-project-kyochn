@@ -130,6 +130,28 @@ int main(int argc, char *argv[]) {
         goto end;
     }
 
+    if (!strcmp(argv[1], "-e")) {
+        for (int i = 1; i < argc - 1; i++) {
+            file[i] = fopen(argv[i + 1], "r");
+            if (file[i] == NULL) {
+                printf("no exist\n\n");
+                continue;
+            }
+            while ((fgets(str, 256, file[i])) != NULL) {
+                for(int j=0;j<sizeof(str);j++){
+                    if(str[j]=='\n'){
+                        str[j]='$';
+                        break;
+                    }
+                } 
+                printf("%s", str);
+            }
+            printf("\n\n");
+            fclose(file[i]);
+        }
+        goto end;
+    }
+
     for (int i = 0; i < argc - 1; i++) {
         file[i] = fopen(argv[i + 1], "r");
         if (file[i] == NULL) {
