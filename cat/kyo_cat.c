@@ -10,10 +10,7 @@ int main(int argc, char *argv[]) {
     FILE *file[argc - 1];
     char str[256], c;
     int line_number = 1;
-
-    // printf("%d\n", argc);
-    //    printf("%s\n",argv[1]);
-
+    
     signal(SIGQUIT, handler);
 
     if (argc < 2 || !strcmp(argv[1], "-")) {
