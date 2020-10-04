@@ -36,10 +36,6 @@ int main(int argc, char *argv[]) {
     if (!strcmp(argv[1], "-w")) {
         for (int i = 1; i < argc - 1; i++) {
             file[i] = fopen(argv[i + 1], "w");
-            if (file[i] == NULL) {
-                printf("no exist\n\n");
-                continue;
-            }
             while ((fgets(str, 256, file[i])) != NULL) {
                 printf("%s", str);
             }
@@ -52,10 +48,6 @@ int main(int argc, char *argv[]) {
     if (!strcmp(argv[1], "-a")) {
         for (int i = 1; i < argc - 1; i++) {
             file[i] = fopen(argv[i + 1], "a");
-            if (file[i] == NULL) {
-                printf("no exist\n\n");
-                continue;
-            }
             while ((fgets(str, 256, file[i])) != NULL) {
                 printf("%s", str);
             }
@@ -84,10 +76,6 @@ int main(int argc, char *argv[]) {
     if (!strcmp(argv[1], "-w+")) {
         for (int i = 1; i < argc - 1; i++) {
             file[i] = fopen(argv[i + 1], "w+");
-            if (file[i] == NULL) {
-                printf("no exist\n\n");
-                continue;
-            }
             while ((fgets(str, 256, file[i])) != NULL) {
                 printf("%s", str);
             }
@@ -100,10 +88,6 @@ int main(int argc, char *argv[]) {
     if (!strcmp(argv[1], "-a+")) {
         for (int i = 1; i < argc - 1; i++) {
             file[i] = fopen(argv[i + 1], "a+");
-            if (file[i] == NULL) {
-                printf("no exist\n\n");
-                continue;
-            }
             while ((fgets(str, 256, file[i])) != NULL) {
                 printf("%s", str);
             }
