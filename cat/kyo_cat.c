@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
     char str[256], c;
     int line_number = 1;
     
-    signal(SIGQUIT, handler);
+    signal(SIGINT, handler);
 
     if (argc < 2 || !strcmp(argv[1], "-")) {
         while (!flag) {
