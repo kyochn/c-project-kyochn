@@ -6,11 +6,17 @@
 
 int main() {
     while (1) {
-        char strin[256]="/bin/sleep";
-
+        char *tp;
+        char str[256];
+        fgets(str,sizeof(str),stdin);
         char* cmd[3];
-        cmd[0]=strin;
-        cmd[1]="5";
+
+        tp=strtok(str," \n");
+        cmd[0]=str;
+        while(tp!=NULL){
+            tp=strtok(NULL," \n");
+            if(tp!=NULL) cmd[1]=tp;
+        }
         cmd[2]=NULL;
 
         int pid = fork();
