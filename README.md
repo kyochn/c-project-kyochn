@@ -1,1 +1,1 @@
-#~7週目
+# C-project-kyochn
