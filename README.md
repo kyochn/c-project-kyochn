@@ -1,1 +1,2 @@
 # C-project-kyochn
+このリポジトリはkyochnがgitの勉強を兼ねてC言語班の課題をpushしたものです
